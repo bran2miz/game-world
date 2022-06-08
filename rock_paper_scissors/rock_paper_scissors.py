@@ -11,11 +11,24 @@ def welcomeMessage():
         """)
 
 def play():
-  user = input("Please enter 'r' for Rock, 'p' for paper, and 's' for scissors")
+  print('''Please enter 'r' for Rock, 'p' for paper, and 's' for scissors''')
+  user = input("> ")
   computer = random.choice(['r','p','s'])
 
   if user == computer:
-    return 'Its a Tie!'
+    return 'It\'s a Tie!'
+  
+  if is_win(user, computer):
+    return 'Congratulations! You Won the Game!'
+  
+  return 'Shucks, you lost!'
 
-def to_win(player, opponent):
-  pass
+def is_win(player, opponent):
+  if (player == 'r' and opponent == 's') or (player == 's' and opponent == 'p') or (player == 'p' and opponent == 'r'):
+    return True
+print(welcomeMessage())
+print(play())
+
+# if __name__ == "__main__":
+#   welcomeMessage()
+#   play()

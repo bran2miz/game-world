@@ -26,4 +26,20 @@ class HumanPlayer(Player):
     super().__init__(letter)
   
   def get_move(self, game):
-    pass
+    valid_square = False
+    value = None
+
+    while not valid_square:
+      square = input(self.letter + '\'s turn. Input move (0-9):')
+      # check that it is a correct value
+      # try to cast it to an integer
+      # invalid error if its not an integer
+      # if the spot is not available, it will also raise error
+      try:
+        value = int(square)
+        if value not in game.available_moves():
+          raise ValueError
+        valid_square = True # this would happen if is a valid square
+      except ValueError:
+        print('Invalid square. Try again!')
+    return value
